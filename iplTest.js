@@ -50,3 +50,25 @@ for(let i=st+1;i<=en;i++){
 		else extraScore_Res[team]=0;
 	}	
 console.log(extraScore_Res);
+let bowler_eco={};
+ start_id=yearlyId[2015].start;
+end_id=yearlyId[2015].end;
+st=match_idx.indexOf(start_id);
+en=match_idx.lastIndexOf(end_id);
+//console.log(ar2[st+1].split(',')[0]);
+let bowlerObj;
+for(let i=st+1;i<=en;i++){
+	let bowler=ar2[i].split(',')[8];
+	let no_balls=parseInt(ar2[i].split(',')[10]);
+	let wide_balls=parseInt(ar2[i].split(',')[13]);
+		let total_runs=parseInt(ar2[i].split(',')[17]);
+	if(bowler_eco.hasOwnProperty(bowler)){
+			bowlerObj.runs+=total_runs;
+				if(no_balls==0 && wide_balls==0)bowlerObj.balls++;//checking noballs and wideballs present or not
+	}else{bowlerObj={};
+			bowler_eco[bowler]=bowlerObj
+			bowlerObj.runs=total_runs;
+			if(no_balls==0 && wide_balls==0)bowlerObj.balls=1;
+			else bowlerObj.balls=0;
+		}
+}
