@@ -72,3 +72,10 @@ for(let i=st+1;i<=en;i++){
 			else bowlerObj.balls=0;
 		}
 }
+et topEconomyBowler=[];
+for(let i in bowler_eco){
+	//bowler_eco[i].runs/bowler_eco[i].balls;
+	topEconomyBowler.push([i,((bowler_eco[i].runs*6)/bowler_eco[i].balls)]);
+}
+console.log(topEconomyBowler.sort((a,b)=>a[1]-b[1]).slice(0,12));
+console.log("=".repeat(60));
