@@ -28,3 +28,25 @@ for(let i in matchesWonYearly){won={};year={};id++;;
 }
 
 console.log(matchesWonYearly);
+var fs=require('fs');
+var ar2=fs.readFileSync('./deliveries.csv','utf8').split('\n');
+
+let start_id=yearlyId[2016].start;
+let end_id=yearlyId[2016].end;
+let extraScore_Res={};
+let match_idx=[];
+		for(let i=1;i<ar2.length;i++){
+			match_idx.push(parseInt(ar2[i].split(',')[0]));
+		}
+//console.log(yearlyId);
+let st=match_idx.indexOf(start_id);
+let en=match_idx.lastIndexOf(end_id);
+//console.log(st+'->'+en);
+for(let i=st+1;i<=en;i++){
+	let extra=parseInt(ar2[i].split(',')[16]);
+	let team=ar2[i].split(',')[3];
+		if(extraScore_Res.hasOwnProperty(team))
+			extraScore_Res[team]+=extra;
+		else extraScore_Res[team]=0;
+	}	
+console.log(extraScore_Res);
