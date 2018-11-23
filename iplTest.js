@@ -72,7 +72,7 @@ for(let i=st+1;i<=en;i++){
 			else bowlerObj.balls=0;
 		}
 }
-et topEconomyBowler=[];
+let topEconomyBowler=[];
 for(let i in bowler_eco){
 	//bowler_eco[i].runs/bowler_eco[i].balls;
 	topEconomyBowler.push([i,((bowler_eco[i].runs*6)/bowler_eco[i].balls)]);
